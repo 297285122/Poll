@@ -34,18 +34,18 @@ egg-project
 ### 完成情况
 目前完成12个API及简单的单元测试(45个测试用例，发送邮件接口暂时未提供用例)。邮件发送与投票数据持久化存储提供了API接口，可以写一个worker（未实现）从MQ中获取消息并调用相应的API处理。
 可优化的地方：
-1、参数校验，目前的koa2-validation + joi不支持ObjectId验证；
-2、完善models与proxys的错误码；
-3、代码整理；
-4、接口定义可再斟酌；
-5、理想的可扩展设计，可将邮件发送、用户部分（包含用户、工作人员）单独实现为公用服务，本服务则只关心投票业务；
-6、完善API的单元测试用例，还缺一小部分测试用例。
+<br>1、参数校验，目前的koa2-validation + joi不支持ObjectId验证；</br>
+<br>2、完善models与proxys的错误码；</br>
+<br>3、代码整理；</br>
+<br>4、接口定义可再斟酌；</br>
+<br>5、理想的可扩展设计，可将邮件发送、用户部分（包含用户、工作人员）单独实现为公用服务，本服务则只关心投票业务；</br>
+<br>6、完善API的单元测试用例，还缺一小部分测试用例。</br>
 
 ### 使用说明
 本服务需要node 8及以上版本，mongo 3.6及以上版本。请先安装并运行mongo和redis，且设置对应的环境变量（具体说明见.env文件）。运行测试用例前，请在tests/helpers/env.js中填写您的mongo、redis地址等环境变量信息。
-源码编译：`npm run build`
-运行测试用例：`npm run test`
-运行服务：`npm run start` 或用阿里云RCP或RDC部署至Docker容器以提供API访问。
+<br>源码编译：`npm run build`</br>
+<br>运行测试用例：`npm run test`</br>
+<br>运行服务：`npm run start` 或用阿里云RCP或RDC部署至Docker容器以提供API访问。</br>
 
 ### 接口说明
 本服务采用Restful API风格（与我理解的restful api稍有差异），全量更新的方式，API版本信息暂存于URL中。
@@ -54,18 +54,18 @@ egg-project
 ```
 post: http://127.0.0.1/v1/poll/users
 {
-	mail:'45632222@163.com',
-	psw: '123456'
+  mail:'45632222@163.com',
+  psw: '123456'
 }
 ```
 ##### Global 响应示例
 ```
 {
-	code: 0,
-	message: 'success',
-	data:{
-		userId:'5caee5599d1a9c2280b3b283'
-	} 
+  code: 0,
+  message: 'success',
+  data:{
+    userId:'5caee5599d1a9c2280b3b283'
+  } 
 }
 ```
 ### <span id = "main">接口目录</span>
@@ -122,7 +122,7 @@ post: http://127.0.0.1/v1/poll/users
   code: 0,
   message: 'success',
   data:{
-		userId:'5caee5599d1a9c2280b3b283'
+    userId:'5caee5599d1a9c2280b3b283'
   } 
 }
 ```
@@ -143,11 +143,11 @@ post: http://127.0.0.1/v1/poll/users
 ##### 响应示例
 ```
 {
-	code: 0,
-	message: 'success',
-	data: {
-	  token: ''
-	}
+  code: 0,
+  message: 'success',
+  data: {
+    token: ''
+  }
 }
 ```
 ###  <span id = "users.email.send">POST /api/:version/poll/users/email </span>
@@ -212,8 +212,8 @@ post: http://127.0.0.1/v1/poll/users
 ##### 请求示例
 ```
 {
-	candidateName: '王二',
-	works: 'i am a bunny',
+  candidateName: '王二',
+  works: 'i am a bunny',
 }
 ```
 ##### 响应示例
@@ -222,7 +222,7 @@ post: http://127.0.0.1/v1/poll/users
   code: 0,
   message: 'success',
   data:{
-	candidateId:'2008450740201411110000174436'
+  candidateId:'2008450740201411110000174436'
   }
 }
 ```
@@ -266,9 +266,9 @@ GET /api/v1/poll/candidates?candidateId=2008450740201411110000174436
   code: 0,
   message: 'success',
   data:{
-	candidateId:'2008450740201411110000174436',
-	candidateName: '王二',
-	works: 'i am a bunny',
+  candidateId:'2008450740201411110000174436',
+  candidateName: '王二',
+  works: 'i am a bunny',
   }
 }
 ```
@@ -307,8 +307,8 @@ GET /api/v1/poll/candidates?candidateId=2008450740201411110000174436
 ```
 PUT /api/v1/poll/candidates/2008450740201411110000174436
 {
-	candidateName: '王二',
-	works: 'i am a bunny',
+  candidateName: '王二',
+  works: 'i am a bunny',
 }
 ```
 ##### 响应示例
@@ -347,7 +347,7 @@ PUT /api/v1/poll/candidates/2008450740201411110000174436
 ##### 请求示例
 ```
 {
-	candidateId:'2008450740201411110000174436'
+  candidateId:'2008450740201411110000174436'
 }
 ```
 ##### 响应示例
@@ -393,15 +393,15 @@ PUT /api/v1/poll/candidates/2008450740201411110000174436
 ##### 请求示例
 ```
 {
-	themeName: '摄影大赛',
-	descripton: '第十届全国大学生摄影大赛',
-	candidates: [{
-		candidateId:'2008450740201411110000174436',
-	},
-	……
-	],
-	start: ,
-	end: ,
+  themeName: '摄影大赛',
+  descripton: '第十届全国大学生摄影大赛',
+  candidates: [{
+    candidateId:'2008450740201411110000174436',
+  },
+  ……
+  ],
+  start: ,
+  end: ,
 }
 ```
 ##### 响应示例
@@ -410,7 +410,7 @@ PUT /api/v1/poll/candidates/2008450740201411110000174436
   code: 0,
   message: 'success',
   data: {
-	themeId:'5cd908ae63afab148c963361',
+  themeId:'5cd908ae63afab148c963361',
   }
 }
 ```
@@ -449,15 +449,15 @@ PUT /api/v1/poll/candidates/2008450740201411110000174436
 ##### 请求示例
 ```
 {
-	themeName: '摄影大赛',
-	descripton: '第十届全国大学生摄影大赛’，
-	candidates: [{
-		candidateId:'2008450740201411110000174436',
-	},
-	……
-	],
-	start: 1557884072,
-	end: 1557904072,
+  themeName: '摄影大赛',
+  descripton: '第十届全国大学生摄影大赛’，
+  candidates: [{
+    candidateId:'2008450740201411110000174436',
+  },
+  ……
+  ],
+  start: 1557884072,
+  end: 1557904072,
 }
 ```
 ##### 响应示例
@@ -510,16 +510,16 @@ GET /api/v1/poll/themes?themeId=5cd908ae63afab148c963361
   code: 0,
   message: 'success'
   data: {
-	themeName: '摄影大赛',
-	descripton: '第十届全国大学生摄影大赛’，
-	candidates: [{
-		candidateId:'2008450740201411110000174436',
-		votes: 89,
-	},
-	……
-	],
-	start: 1557884072,
-	end: 1557904072,
+  themeName: '摄影大赛',
+  descripton: '第十届全国大学生摄影大赛’，
+  candidates: [{
+    candidateId:'2008450740201411110000174436',
+    votes: 89,
+  },
+  ……
+  ],
+  start: 1557884072,
+  end: 1557904072,
 }
 ```
 ###  <span id = "result.update">PUT /api/:version/poll/results </span>
@@ -553,16 +553,16 @@ GET /api/v1/poll/themes?themeId=5cd908ae63afab148c963361
 ##### 请求示例
 ```
 {
-	themeId: '4568450740201411110005820870',
-	mail: '123456789@qq.com',
-	candidateId：['1008450740201411110005820873'],
+  themeId: '4568450740201411110005820870',
+  mail: '123456789@qq.com',
+  candidateId：['1008450740201411110005820873'],
 }
 ```
 ##### 响应示例
 ```
 {
-	code: 0,
-	message: 'success',
+  code: 0,
+  message: 'success',
 }
 ```
 
@@ -597,16 +597,16 @@ GET /api/v1/poll/themes?themeId=5cd908ae63afab148c963361
 ##### 请求示例
 ```
 {
-	themeId: '4568450740201411110005820870',
-	mail: '123456789@qq.com',
-	candidateId：['1008450740201411110005820873'],
+  themeId: '4568450740201411110005820870',
+  mail: '123456789@qq.com',
+  candidateId：['1008450740201411110005820873'],
 }
 ```
 ##### 响应示例
 ```
 {
-	code: 0,
-	message: 'success',
+  code: 0,
+  message: 'success',
 }
 ```
 
