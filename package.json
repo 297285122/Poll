@@ -1,0 +1,87 @@
+{
+  "name": "poll",
+  "version": "1.0.0",
+  "description": "This project provides API for Voting and Election System.",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=test node dist/app.js",
+    "lint": "eslint --fix src",
+    "prebuild": "rimraf -rf dist",
+    "build": "cross-env NODE_ENV=production babel -d dist src",
+    "test": "cross-env NODE_ENV=test nyc ava"
+  },
+  "keywords": [
+    "poll",
+    "vote"
+  ],
+  "author": "yangxia.22@163.com",
+  "license": "ISC",
+  "dependencies": {
+    "ali-mns": "^2.6.8",
+    "dotenv": "^8.0.0",
+    "ioredis": "^4.9.3",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.7.0",
+    "koa-body": "^4.1.0",
+    "koa-bunyan-logger": "^2.1.0",
+    "koa-router": "^7.4.0",
+    "koa-session2": "^2.2.10",
+    "koa2-validation": "^1.0.0",
+    "mongoose": "^5.5.7",
+    "nodemailer": "^6.1.1",
+    "raw-body": "^2.4.0",
+    "uuid": "^3.3.2",
+    "validator": "^10.11.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "ava": "^1.4.1",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-istanbul": "^5.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "isomorphic-fetch": "^2.2.1",
+    "nyc": "^14.1.1",
+    "rewire": "^4.0.1",
+    "supertest": "^4.0.2"
+  },
+  "ava": {
+    "files": [
+      "./tests/**/*.test.js"
+    ],
+    "require": [
+      "@babel/register"
+    ],
+    "failFast": false,
+    "babel": {
+      "testOptions": {
+        "babelrc": false,
+        "configFile": false
+      }
+    }
+  },
+  "nyc": {
+    "require": [
+      "babel-register",
+      "./tests/helpers/env"
+    ],
+    "include": [
+      "src/"
+    ],
+    "reporter": [
+      "html",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  }
+}
